@@ -1,0 +1,117 @@
+$primary-color: #ffffff;
+
+body {
+    background-color: #282c34;
+    color: $primary-color;
+    min-height: 100vh;
+}
+
+#main-container {
+    margin-top: 15px;
+}
+
+#loading {
+    font-size: 24px;
+}
+
+#error {
+    font-size: 24px;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-color;
+
+    :hover {
+        color: $primary-color
+    }
+}
+
+#cardd {
+    transition: all 0.15s ease;
+}
+
+#thrash {
+    cursor: pointer;
+}
+
+#cardd:hover {
+    box-shadow: 1px 1px 5px white;
+    transform: scale(1.0125);
+}
+
+#add-employe {
+    input {
+        background: #add;
+    }
+
+    select {
+        background: #add;
+    }
+}
+
+#add-company {
+    input {
+        background: #add;
+    }
+
+    select {
+        background: #add;
+    }
+}
+
+#new-company {
+    background-color: #6797ce;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    width: 99%;
+
+    &:hover {
+        background-color: #4a7eb0;
+        cursor: pointer;
+    }
+}
+
+#new-employee {
+    background-color: #6797ce;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 10px;
+    width: 99%;
+    color: #fff;
+
+    &:hover {
+        background-color: #4a7eb0;
+        cursor: pointer;
+    }
+
+
+}
+
+#app-body {
+    #navbar {
+        background-color: #6797ce;
+        color: $primary-color;
+        padding: 5px 30px 5px 30px;
+    }
+
+    #home-page {
+        #text-area {
+            margin-top: 150px;
+            font-size: 26px;
+            background: -webkit-linear-gradient(#eee, #4a90e2, #eee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #lottie {
+            margin-top: 100px;
+        }
+    }
+}
+
+#navbar {
+    border-radius: 0 0 10px 10px;
+}
