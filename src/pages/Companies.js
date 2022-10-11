@@ -67,7 +67,7 @@ function Companies() {
                         (
                             <div key={company.id}>
 
-                                <div id='cardd' className="card bg-transparent border border-light mt-3" >
+                                <div id='cardd' className="card bg-transparent border border-light mb-4" >
                                     <div className="card-body">
                                         <div className="d-flex justify-content-between">
                                             <h4 className="card-title">{company.companyName}</h4>
@@ -82,7 +82,7 @@ function Companies() {
                                 </div>
 
 
-                                <Modal show={show == company.id} onHide={handleClose} className="text-dark mt-5">
+                                <Modal show={show == company.id} onHide={handleClose} className="text-dark 5">
                                     <Modal.Header closeButton>
                                         <Modal.Title>Modal heading</Modal.Title>
                                     </Modal.Header>

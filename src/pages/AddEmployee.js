@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchCompany } from '../redux/company/services';
+import { addEmployee } from '../redux/employee/services';
 
 function AddEmployee() {
     const [name, setName] = React.useState('');
@@ -19,24 +20,19 @@ function AddEmployee() {
 
     useEffect(() => {
         dispatch(fetchCompany());
-    }, [])
+    }, []);
 
-    const addEmployee = async (e) => {
+    const addEmploye = (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:5279/api/employees', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name,
-                age,
-                position,
-                companyId: company
-            })
-        });
+        dispatch(addEmployee({
+            name,
+            age,
+            position,
+            companyId: company
+        }));
         navigate('/employees');
     }
+
 
 
     return (
@@ -67,7 +63,7 @@ function AddEmployee() {
                     </Form.Select>
                 </Form.Group>
 
-                <Button id="new-company" type="submit" className='mt-2' onClick={addEmployee} >
+                <Button id="new-company" type="submit" className='2' onClick={addEmploye} >
                     Add
                 </Button>
             </Form>

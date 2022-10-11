@@ -25,4 +25,20 @@ export const deleteEmployee = createAsyncThunk(
     }
 );
 
+export const addEmployee = createAsyncThunk(
+    "employee/addEmployee",
+    async (employee) => {
+        const res = await axios.post("http://localhost:5279/api/employees/", employee);
+        return res.data;
+    }
+);
+
+export const updateEmployee = createAsyncThunk(
+    "employee/updateEmployee",
+    async (employee) => {
+        const res = await axios.put(`http://localhost:5279/api/employees/${employee.id}`, employee);
+        return res.data;
+    }
+);
+
 

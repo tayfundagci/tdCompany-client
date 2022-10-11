@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { deleteEmployee, fetchEmployee } from '../redux/employee/services';
+import { deleteEmployee, fetchEmployee, updateEmployee } from '../redux/employee/services';
 import axios from "axios"
 import { selectEmployee } from '../redux/employee/employeeSlice';
 
@@ -35,13 +35,25 @@ function EmployeeDetail() {
         dispatch(fetchEmployee(employee_Id));
     }, [])
 
-    const updateEmployee = (id) => {
-        axios.put(`http://localhost:5279/api/employees/${id}`, {
+    // const updateEmployee = (id) => {
+    //     axios.put(`http://localhost:5279/api/employees/${id}`, {
+    //         name,
+    //         age,
+    //         position,
+    //         companyId: company
+    //     })
+    //     setShow(false);
+    //     navigate('/employees');
+    // }
+
+    const updateEmploye = (id) => {
+        dispatch(updateEmployee({
+            id,
             name,
             age,
             position,
             companyId: company
-        })
+        }));
         setShow(false);
         navigate('/employees');
     }
@@ -55,13 +67,11 @@ function EmployeeDetail() {
         navigate('/employees');
     }
 
-    console.log(employee);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(employee.id);
     return (
         <div className=''>
-            <div id='cardd' className="card bg-transparent border border-light mt-5">
+            <div id='cardd' className="card bg-transparent border border-light ">
                 <div className="card-body">
                     <div className="d-flex justify-content-between">
                         <h4 className="card-title">{employee?.name}</h4>
@@ -81,9 +91,9 @@ function EmployeeDetail() {
             </div>
 
 
-            <Modal show={show == employee?.id} onHide={handleClose} className="text-dark mt-5">
+            <Modal show={show == employee?.id} onHide={handleClose} className="text-dark">
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>{employee?.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -131,7 +141,7 @@ function EmployeeDetail() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={() => updateEmployee(employee_Id)}>
+                    <Button variant="primary" onClick={() => updateEmploye(employee_Id)}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

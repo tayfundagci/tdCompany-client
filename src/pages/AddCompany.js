@@ -47,7 +47,7 @@ function AddCompany() {
                     <Form.Control type="text" placeholder="Country" onChange={(e) => setCountry(e.target.value)} />
                 </Form.Group>
 
-                <Button id="new-company" type="submit" className='mt-2' onClick={addCompany}>
+                <Button id="new-company" type="submit" className='2' onClick={addCompany}>
                     Add
                 </Button>
             </Form>

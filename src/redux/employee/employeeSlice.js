@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteEmployee, fetchAllEmployee, fetchEmployee } from "./services";
+import { addEmployee, deleteEmployee, fetchAllEmployee, fetchEmployee, updateEmployee } from "./services";
 
 export const employeeSlice = createSlice({
     name: "employee",
@@ -35,10 +35,19 @@ export const employeeSlice = createSlice({
             state.error = action.error.message;
         },
 
+        //addEmploye
+        [addEmployee.fulfilled]: (state, action) => {
+            state.items = [...state.items, action.payload];
+        },
+
+        //updateEmployee
+        [updateEmployee.fulfilled]: (state, action) => {
+            state.items = [...state.items, action.payload];
+        },
+
         //deleteEmployee
         [deleteEmployee.fulfilled]: (state, action) => {
             state.items.id = state.items.employeeList.filter(item => item.id !== action.payload);
-
         }
 
     }

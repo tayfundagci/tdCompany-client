@@ -6,17 +6,17 @@ function Navbar() {
         <div>
             <nav id='navbar' className="navbar navbar-expand-lg">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">tDCompany</Link>
+                    <Link className="navbar-brand fw-bold" to="/">tDCompany</Link>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
 
                     </div>
                     <div className=''>
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
-                                <Link className='nav-link ' to="/login"><button type="button" class="btn ">Login</button></Link>
+                                <Link className='nav-link ' to="/login"><button type="button" className="btn ">Login</button></Link>
                             </li>
                             <li className='nav-item'>
-                                <Link className='nav-link ' to="/register"><button type="button" class="btn ">Register</button></Link>
+                                <Link className='nav-link ' to="/register"><button type="button" className="btn ">Register</button></Link>
                             </li>
                         </ul>
                     </div>

@@ -31,9 +31,9 @@ function Employees() {
         <div className="container">
             <div className='row justify-content-center'>
                 {employees && employees.map((employee) => (
-                    <div className='col-lg-4' key={employee.id}>
+                    <div className='col-lg-6' key={employee.id}>
                         <Link to={`/employee/${employee.id}`}>
-                            <div id='cardd' className="card bg-transparent border border-light mt-3">
+                            <div id='cardd' className="card bg-transparent border border-light mb-4">
                                 <div className="card-body">
                                     <h4 className="card-title">{employee.name}</h4>
                                     <h6 className="card-text">{employee.position}</h6>
