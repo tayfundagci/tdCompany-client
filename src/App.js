@@ -8,6 +8,9 @@ import EmployeeDetail from './pages/EmployeeDetail';
 import AddCompany from './pages/AddCompany';
 import AddEmployee from './pages/AddEmployee';
 import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
             <Route path="/employee/:employee_Id" element={<EmployeeDetail />} />
             <Route path="/addcompany" element={<AddCompany />} />
             <Route path="/addemployee" element={<AddEmployee />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </div>

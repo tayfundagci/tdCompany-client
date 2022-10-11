@@ -13,10 +13,10 @@ function Navbar() {
                     <div className=''>
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
-                                <Link className='nav-link active' to="/companies">Companies</Link>
+                                <Link className='nav-link ' to="/login"><button type="button" class="btn ">Login</button></Link>
                             </li>
                             <li className='nav-item'>
-                                <Link className='nav-link active' to="/employees">Employees</Link>
+                                <Link className='nav-link ' to="/register"><button type="button" class="btn ">Register</button></Link>
                             </li>
                         </ul>
                     </div>

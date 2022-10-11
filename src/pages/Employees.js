@@ -43,7 +43,6 @@ function Employees() {
                         </Link>
                     </div>
                 ))}
-                <Link id='new-employee' to="/addemployee" className='mt-4 text-center'  >Add a New Employee</Link>
 
             </div>
 

@@ -131,7 +131,6 @@ function Companies() {
                         )
                     )
                 })}
-                <Link id='new-company' to="/addcompany" className='mt-4 text-center mb-3' >Add a New Company</Link>
             </div>
 
 
