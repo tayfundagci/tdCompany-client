@@ -35,30 +35,50 @@ a {
     cursor: pointer;
 }
 
+#sidebar {
+    width: 280px;
+    height: calc(100vh - 50px);
+    background-color: #37393d;
+    color: white;
+    border-right: 1px solid #6797ce;
+
+    a {
+        color: white;
+    }
+
+    .dropdown {
+        ul {
+            a {
+                color: #000
+            }
+        }
+    }
+}
+
 #cardd:hover {
     box-shadow: 1px 1px 5px white;
     transform: scale(1.0125);
 }
 
-#add-employe {
-    input {
-        background: #add;
-    }
+// #add-employe {
+//     input {
+//         background: #add;
+//     }
 
-    select {
-        background: #add;
-    }
-}
+//     select {
+//         background: #add;
+//     }
+// }
 
-#add-company {
-    input {
-        background: #add;
-    }
+// #add-company {
+//     input {
+//         background: #add;
+//     }
 
-    select {
-        background: #add;
-    }
-}
+//     select {
+//         background: #add;
+//     }
+// }
 
 #new-company {
     background-color: #6797ce;
@@ -66,7 +86,7 @@ a {
     border-radius: 5px;
     padding: 10px;
     color: #fff;
-    width: 99%;
+    width: 100%;
 
     &:hover {
         background-color: #4a7eb0;
@@ -113,5 +133,5 @@ a {
 }
 
 #navbar {
-    border-radius: 0 0 10px 10px;
+    // border-radius: 0 0 10px 10px;
 }

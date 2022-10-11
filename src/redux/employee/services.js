@@ -17,3 +17,12 @@ export const fetchEmployee = createAsyncThunk(
     }
 );
 
+export const deleteEmployee = createAsyncThunk(
+    "employee/deleteEmployee",
+    async (id) => {
+        await axios.delete(`http://localhost:5279/api/employees/${id}`);
+        return id;
+    }
+);
+
+

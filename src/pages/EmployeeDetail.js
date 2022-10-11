@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchEmployee } from '../redux/employee/services';
+import { deleteEmployee, fetchEmployee } from '../redux/employee/services';
 import axios from "axios"
 import { selectEmployee } from '../redux/employee/employeeSlice';
 
@@ -50,14 +50,8 @@ function EmployeeDetail() {
         setEmployee(selectedEmployee?.employee);
     }, [selectedEmployee])
 
-    // useEffect(() => {
-    //     axios(`http://localhost:5279/api/employees/${employee_Id}`)
-    //         .then((res) => res.data)
-    //         .then((data) => setEmployee(data.employee))
-    // }, []);
-
-    const handleDelete = async () => {
-        await axios.delete(`http://localhost:5279/api/employees/${employee_Id}`);
+    const handleDelete = async (id) => {
+        await dispatch(deleteEmployee(id));
         navigate('/employees');
     }
 
@@ -71,7 +65,7 @@ function EmployeeDetail() {
                 <div className="card-body">
                     <div className="d-flex justify-content-between">
                         <h4 className="card-title">{employee?.name}</h4>
-                        <h4><i id='thrash' onClick={handleDelete} className="bi bi-trash"></i></h4>
+                        <h4><i id='thrash' onClick={() => handleDelete(employee_Id)} className="bi bi-trash"></i></h4>
                     </div>
                     <h6 className="card-text">Position: {employee?.position}</h6>
                     <h6 className="card-title">Age : {employee?.age}</h6>

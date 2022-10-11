@@ -9,3 +9,11 @@ export const fetchCompany = createAsyncThunk(
     }
 );
 
+export const deleteCompany = createAsyncThunk(
+    "company/deleteCompany",
+    async (id) => {
+        await axios.delete(`http://localhost:5279/api/companies/${id}`);
+        return id;
+    }
+);
+

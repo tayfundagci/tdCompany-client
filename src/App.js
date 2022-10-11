@@ -7,20 +7,24 @@ import Navbar from './components/Navbar';
 import EmployeeDetail from './pages/EmployeeDetail';
 import AddCompany from './pages/AddCompany';
 import AddEmployee from './pages/AddEmployee';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
     <div id='app-body'>
       <Navbar />
-      <div id='main-container' className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/companies" element={<Companies />} />
-          <Route path="/employees" element={<Employees />} />
-          <Route path="/employee/:employee_Id" element={<EmployeeDetail />} />
-          <Route path="/addcompany" element={<AddCompany />} />
-          <Route path="/addemployee" element={<AddEmployee />} />
-        </Routes>
+      <div style={{ display: "flex" }}>
+        <Sidebar />
+        <div id='main-container' className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/companies" element={<Companies />} />
+            <Route path="/employees" element={<Employees />} />
+            <Route path="/employee/:employee_Id" element={<EmployeeDetail />} />
+            <Route path="/addcompany" element={<AddCompany />} />
+            <Route path="/addemployee" element={<AddEmployee />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );

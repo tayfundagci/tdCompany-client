@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Error from '../components/Error';
 import Loading from '../components/Loading';
-import { fetchCompany } from '../redux/company/services';
+import { deleteCompany, fetchCompany } from '../redux/company/services';
 import axios from "axios"
 
 import Button from 'react-bootstrap/Button';
@@ -27,8 +27,8 @@ function Companies() {
         dispatch(fetchCompany());
     }, [])
 
-    const handleDelete = async (id, e) => {
-        await axios.delete(`http://localhost:5279/api/companies/${id}`);
+    const handleDelete = async (id) => {
+        await dispatch(deleteCompany(id));
         dispatch(fetchCompany());
     }
 
