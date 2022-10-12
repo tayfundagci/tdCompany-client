@@ -35,17 +35,6 @@ function EmployeeDetail() {
         dispatch(fetchEmployee(employee_Id));
     }, [])
 
-    // const updateEmployee = (id) => {
-    //     axios.put(`http://localhost:5279/api/employees/${id}`, {
-    //         name,
-    //         age,
-    //         position,
-    //         companyId: company
-    //     })
-    //     setShow(false);
-    //     navigate('/employees');
-    // }
-
     const updateEmploye = (id) => {
         dispatch(updateEmployee({
             id,
@@ -53,9 +42,10 @@ function EmployeeDetail() {
             age,
             position,
             companyId: company
-        }));
+        })).then(() => {
+            dispatch(fetchEmployee(employee_Id));
+        });
         setShow(false);
-        navigate('/employees');
     }
 
     useEffect(() => {

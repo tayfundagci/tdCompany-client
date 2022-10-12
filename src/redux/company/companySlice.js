@@ -8,49 +8,51 @@ export const companySlice = createSlice({
         isLoading: false,
         error: null
     },
-    extraReducers: {
-        //fetchCompany
-        [fetchCompany.pending]: (state, action) => {
-            state.isLoading = true;
-        },
-        [fetchCompany.fulfilled]: (state, action) => {
-            state.items = action.payload;
-            state.isLoading = false;
-        },
-        [fetchCompany.rejected]: (state, action) => {
-            state.isLoading = false;
-            state.error = action.error.message;
-        },
+    extraReducers: (builder) => {
+        {
+            //fetchCompany
+            builder.addCase(fetchCompany.pending, (state, action) => {
+                state.isLoading = true;
+            })
+            builder.addCase(fetchCompany.fulfilled, (state, action) => {
+                state.items = action.payload
+                state.isLoading = false;
+            })
+            builder.addCase(fetchCompany.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.error.message;
+            })
 
-        //addCompany
-        [addCompany.pending]: (state, action) => {
-            state.isLoading = true;
-        },
-        [addCompany.fulfilled]: (state, action) => {
-            state.items = action.payload;
-            state.isLoading = false;
-        },
-        [addCompany.rejected]: (state, action) => {
-            state.isLoading = false;
-            state.error = action.error.message;
-        },
+            //addCompany
+            builder.addCase([addCompany.pending], (state, action) => {
+                state.isLoading = true;
+            })
+            builder.addCase(addCompany.fulfilled, (state, action) => {
+                state.items = action.payload;
+                state.isLoading = false;
+            })
+            builder.addCase(addCompany.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.error.message;
+            })
 
-        //updateCompany
-        [updateCompany.pending]: (state, action) => {
-            state.isLoading = true;
-        },
-        [updateCompany.fulfilled]: (state, action) => {
-            state.items = action.payload;
-            state.isLoading = false;
-        },
-        [updateCompany.rejected]: (state, action) => {
-            state.isLoading = false;
-            state.error = action.error.message;
-        },
+            //updateCompany
+            builder.addCase(updateCompany.pending, (state, action) => {
+                state.isLoading = true;
+            })
+            builder.addCase(updateCompany.fulfilled, (state, action) => {
+                state.items = action.payload;
+                state.isLoading = false;
+            })
+            builder.addCase(updateCompany.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.error.message;
+            })
 
-        //deleteCompany
-        [deleteCompany.fulfilled]: (state, action) => {
-            state.items = action.payload;
+            //deleteCompany
+            builder.addCase(deleteCompany.fulfilled, (state, action) => {
+                state.items = action.payload;
+            })
         }
     }
 });

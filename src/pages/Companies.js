@@ -32,6 +32,17 @@ function Companies() {
         dispatch(fetchCompany());
     }
 
+    const updateCompanies = (id) => {
+        dispatch(updateCompany({
+            id,
+            name,
+            address,
+            country
+        })).then(() => {
+            dispatch(fetchCompany());
+        })
+        setShow(false);
+    }
 
     if (isLoading) {
         return <Loading />
@@ -40,21 +51,6 @@ function Companies() {
     if (error) {
         return <Error message={error} />
     }
-
-
-    const updateCompanies = (id) => {
-        dispatch(updateCompany({
-            id,
-            name,
-            address,
-            country
-        }));
-        dispatch(fetchCompany());
-        setShow(false);
-        window.location.reload();
-    }
-
-
 
     return (
         <div className="container">
