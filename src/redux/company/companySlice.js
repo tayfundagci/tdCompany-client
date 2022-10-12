@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteCompany, fetchCompany } from "./services";
+import { addCompany, deleteCompany, fetchCompany, updateCompany } from "./services";
 
 export const companySlice = createSlice({
     name: "company",
@@ -22,9 +22,35 @@ export const companySlice = createSlice({
             state.error = action.error.message;
         },
 
+        //addCompany
+        [addCompany.pending]: (state, action) => {
+            state.isLoading = true;
+        },
+        [addCompany.fulfilled]: (state, action) => {
+            state.items = action.payload;
+            state.isLoading = false;
+        },
+        [addCompany.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.error.message;
+        },
+
+        //updateCompany
+        [updateCompany.pending]: (state, action) => {
+            state.isLoading = true;
+        },
+        [updateCompany.fulfilled]: (state, action) => {
+            state.items = action.payload;
+            state.isLoading = false;
+        },
+        [updateCompany.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.error.message;
+        },
+
         //deleteCompany
         [deleteCompany.fulfilled]: (state, action) => {
-            state.items.id = state.items.companyList.filter(item => item.id !== action.payload);
+            state.items = action.payload;
         }
     }
 });

@@ -27,7 +27,7 @@ export const employeeSlice = createSlice({
             state.isLoading = true;
         },
         [fetchEmployee.fulfilled]: (state, action) => {
-            state.items = { ...state.items, employee: action.payload.employee };
+            state.items = action.payload
             state.isLoading = false;
         },
         [fetchEmployee.rejected]: (state, action) => {
@@ -37,17 +37,17 @@ export const employeeSlice = createSlice({
 
         //addEmploye
         [addEmployee.fulfilled]: (state, action) => {
-            state.items = [...state.items, action.payload];
+            state.items = action.payload
         },
 
         //updateEmployee
         [updateEmployee.fulfilled]: (state, action) => {
-            state.items = [...state.items, action.payload];
+            state.items = action.payload
         },
 
         //deleteEmployee
         [deleteEmployee.fulfilled]: (state, action) => {
-            state.items.id = state.items.employeeList.filter(item => item.id !== action.payload);
+            state.items = action.payload
         }
 
     }

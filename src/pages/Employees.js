@@ -37,7 +37,10 @@ function Employees() {
                                 <div className="card-body">
                                     <h4 className="card-title">{employee.name}</h4>
                                     <h6 className="card-text">{employee.position}</h6>
-                                    <h6 className="card-title">{employee.age}</h6>
+                                    <div className="d-flex justify-content-between">
+                                        <h6 className="card-title">{employee.age}</h6>
+                                        <span id="click-details">Click for details</span>
+                                    </div>
                                 </div>
                             </div>
                         </Link>
