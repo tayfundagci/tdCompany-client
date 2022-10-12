@@ -47,17 +47,17 @@ function AddCompany() {
     return (
         <div id="add-company">
             <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Name</Form.Label>
+                <Form.Group className="mb-3 text-info" controlId="formBasicEmail">
+                    <Form.Label className='text-info'>Name</Form.Label>
                     <Form.Control type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3 text-info" controlId="formBasicPassword">
                     <Form.Label>Address</Form.Label>
                     <Form.Control type="text" placeholder="Address" onChange={(e) => setAddress(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3 text-info" controlId="formBasicPassword">
                     <Form.Label>Country</Form.Label>
                     <Form.Control type="text" placeholder="Country" onChange={(e) => setCountry(e.target.value)} />
                 </Form.Group>

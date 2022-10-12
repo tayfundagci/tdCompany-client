@@ -62,7 +62,12 @@ function Companies() {
                 {companies && companies.map((company) => {
 
                     const handleClose = () => setShow(false);
-                    const handleShow = () => setShow(company.id);
+                    const handleShow = () => {
+                        setName(company.companyName);
+                        setAddress(company.address);
+                        setCountry(company.country);
+                        setShow(company.id);
+                    }
                     return (
                         (
                             <div key={company.id}>
@@ -84,7 +89,7 @@ function Companies() {
 
                                 <Modal show={show == company.id} onHide={handleClose} className="text-dark 5">
                                     <Modal.Header closeButton>
-                                        <Modal.Title>Modal heading</Modal.Title>
+                                        <Modal.Title>Edit your company</Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
                                         <Form>
@@ -92,7 +97,7 @@ function Companies() {
                                                 <Form.Label>Name</Form.Label>
                                                 <Form.Control
                                                     type="email"
-                                                    placeholder={company.companyName}
+                                                    value={name}
                                                     autoFocus
                                                     onChange={(e) => setName(e.target.value)}
                                                 />
@@ -101,7 +106,7 @@ function Companies() {
                                                 <Form.Label>Address</Form.Label>
                                                 <Form.Control
                                                     type="email"
-                                                    placeholder={company.address}
+                                                    value={address}
                                                     autoFocus
                                                     onChange={(e) => setAddress(e.target.value)}
                                                 />
@@ -110,7 +115,7 @@ function Companies() {
                                                 <Form.Label>Country</Form.Label>
                                                 <Form.Control
                                                     type="email"
-                                                    placeholder={company.country}
+                                                    value={country}
                                                     autoFocus
                                                     onChange={(e) => setCountry(e.target.value)}
                                                 />

@@ -38,22 +38,22 @@ function AddEmployee() {
     return (
         <div id='add-employe'>
             <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3 text-info" controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3 text-info" controlId="formBasicPassword">
                     <Form.Label>Age</Form.Label>
                     <Form.Control type="number" placeholder="Age" onChange={(e) => setAge(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3 text-info" controlId="formBasicPassword">
                     <Form.Label>Position</Form.Label>
                     <Form.Control type="text" placeholder="Position" onChange={(e) => setPosition(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3 text-info" controlId="formBasicPassword">
                     <Form.Label>Company</Form.Label>
                     <Form.Select aria-label="Default select example" onChange={(e) => setCompany(e.target.value)}>
                         <option>Select your company</option>

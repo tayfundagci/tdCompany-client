@@ -68,7 +68,13 @@ function EmployeeDetail() {
     }
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(employee.id);
+    const handleShow = () => {
+        setName(employee?.name);
+        setAge(employee?.age);
+        setPosition(employee?.position);
+        setCompany(employee?.companyId);
+        setShow(employee.id);
+    }
     return (
         <div className=''>
             <div id='cardd' className="card bg-transparent border border-light ">
@@ -101,7 +107,7 @@ function EmployeeDetail() {
                             <Form.Label>Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder={employee?.name}
+                                value={name}
                                 autoFocus
                                 onChange={(e) => setName(e.target.value)}
                             />
@@ -110,7 +116,7 @@ function EmployeeDetail() {
                             <Form.Label>Address</Form.Label>
                             <Form.Control
                                 type="number"
-                                placeholder={employee?.age}
+                                value={age}
                                 autoFocus
                                 onChange={(e) => setAge(e.target.value)}
                             />
@@ -119,7 +125,7 @@ function EmployeeDetail() {
                             <Form.Label>Position</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder={employee?.position}
+                                value={position}
                                 autoFocus
                                 onChange={(e) => setPosition(e.target.value)}
                             />
