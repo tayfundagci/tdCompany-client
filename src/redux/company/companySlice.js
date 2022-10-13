@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addCompany, deleteCompany, fetchCompany, updateCompany } from "./services";
+import { addCompany, deleteCompany, fetchCompany, getCompanyPerson, updateCompany } from "./services";
 
 export const companySlice = createSlice({
     name: "company",
@@ -23,6 +23,19 @@ export const companySlice = createSlice({
                 state.error = action.error.message;
             })
 
+            //fetchCompanyPerson
+            builder.addCase(getCompanyPerson.pending, (state, action) => {
+                state.isLoading = true;
+            })
+            builder.addCase(getCompanyPerson.fulfilled, (state, action) => {
+                state.items = action.payload
+                state.isLoading = false;
+            })
+            builder.addCase(getCompanyPerson.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.error.message;
+            })
+
             //addCompany
             builder.addCase([addCompany.pending], (state, action) => {
                 state.isLoading = true;
@@ -33,6 +46,7 @@ export const companySlice = createSlice({
             })
             builder.addCase(addCompany.rejected, (state, action) => {
                 state.isLoading = false;
+                //action.error.message = "UnAuthorized !";
                 state.error = action.error.message;
             })
 
@@ -46,12 +60,21 @@ export const companySlice = createSlice({
             })
             builder.addCase(updateCompany.rejected, (state, action) => {
                 state.isLoading = false;
+                //action.error.message = "UnAuthorized !";
                 state.error = action.error.message;
             })
 
             //deleteCompany
+            builder.addCase(deleteCompany.pending, (state, action) => {
+                state.isLoading = true;
+            })
             builder.addCase(deleteCompany.fulfilled, (state, action) => {
                 state.items = action.payload;
+            })
+            builder.addCase(deleteCompany.rejected, (state, action) => {
+                state.isLoading = false;
+                //action.error.message = "UnAuthorized !";
+                state.error = action.error.message;
             })
         }
     }

@@ -65,6 +65,7 @@ function EmployeeDetail() {
         setCompany(employee?.companyId);
         setShow(employee.id);
     }
+
     return (
         <div className=''>
             <div id='cardd' className="card bg-transparent border border-light ">

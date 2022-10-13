@@ -101,7 +101,7 @@ function Companies() {
                                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                                 <Form.Label>Address</Form.Label>
                                                 <Form.Control
-                                                    type="email"
+                                                    type="text"
                                                     value={address}
                                                     autoFocus
                                                     onChange={(e) => setAddress(e.target.value)}

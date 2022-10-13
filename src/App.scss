@@ -110,8 +110,10 @@ a {
 
     #home-page {
         #text-area {
-            margin-top: 70px;
+            margin-top: 175px;
             font-size: 26px;
+            text-align: justify;
+            margin-right: 70px;
             background: -webkit-linear-gradient(#eee, #4a90e2, #eee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -119,6 +121,7 @@ a {
 
         #lottie {
             margin-top: 70px;
+            filter: drop-shadow(20px 20px 50px #3a526e);
         }
     }
 }

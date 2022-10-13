@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { dispatch, useSelector } from "react-redux";
 
 function Navbar() {
+
+    const user = useSelector(state => state.auth.user);
+    useEffect(() => {
+        console.log(user);
+    }, [user])
+
     return (
         <div>
             <nav id='navbar' className="navbar navbar-expand-lg">

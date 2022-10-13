@@ -9,6 +9,14 @@ export const fetchCompany = createAsyncThunk(
     }
 );
 
+export const getCompanyPerson = createAsyncThunk(
+    "company/getCompanyPerson",
+    async () => {
+        const res = await axios("http://localhost:5279/api/companies/getcompanyperson");
+        return res.data;
+    }
+);
+
 export const deleteCompany = createAsyncThunk(
     "company/deleteCompany",
     async (id) => {
@@ -32,4 +40,5 @@ export const updateCompany = createAsyncThunk(
         return res.data;
     }
 );
+
 

@@ -15,24 +15,6 @@ function AddCompany() {
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
-    // const addCompany = async (e) => {
-    //     e.preventDefault();
-    //     const response = await fetch('http://localhost:5279/api/companies', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             name,
-    //             address,
-    //             country
-    //         })
-    //     });
-    //     const data = await response.json();
-    //     navigate('/companies')
-    //     console.log(data);
-    // }
-
     const addCompanyy = async (e) => {
         e.preventDefault();
         dispatch(addCompany({
@@ -42,7 +24,6 @@ function AddCompany() {
         }));
         navigate('/companies');
     }
-
 
     return (
         <div id="add-company">
