@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from '../redux/auth/services';
 
@@ -10,6 +10,7 @@ function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+
     const handleLogin = (e) => {
         e.preventDefault();
         dispatch(userLogin({
@@ -17,6 +18,7 @@ function Login() {
             password: password
         })).then(() => {
             navigate("/")
+            window.location.href = "/";
         })
     }
 

@@ -36,8 +36,15 @@ export const addCompany = createAsyncThunk(
 export const updateCompany = createAsyncThunk(
     "company/updateCompany",
     async (company) => {
-        const res = await axios.put(`http://localhost:5279/api/companies/${company.id}`, company);
-        return res.data;
+        const response = await axios.put(`http://localhost:5279/api/companies/${company.id}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            body: company
+
+        })
+        return response.data;
     }
 );
 

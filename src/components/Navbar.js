@@ -4,10 +4,10 @@ import { dispatch, useSelector } from "react-redux";
 
 function Navbar() {
 
-    const user = useSelector(state => state.auth.user);
-    useEffect(() => {
-        console.log(user);
-    }, [user])
+    const user = localStorage.getItem("user");
+
+
+
 
     return (
         <div>
@@ -20,10 +20,10 @@ function Navbar() {
                     <div className=''>
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
-                                <Link className='nav-link ' to="/login"><button type="button" className="btn ">Login</button></Link>
+                                {!user ? (<Link className='nav-link ' to="/login"><button type="button" className="btn ">Login</button></Link>) : <Link className='nav-link ' to="/profile"><button type="button" className="btn ">Profile</button></Link>}
                             </li>
                             <li className='nav-item'>
-                                <Link className='nav-link ' to="/register"><button type="button" className="btn ">Register</button></Link>
+                                {!user && <Link className='nav-link ' to="/register"><button type="button" className="btn ">Register</button></Link>}
                             </li>
                         </ul>
                     </div>

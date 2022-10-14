@@ -9,3 +9,11 @@ export const userLogin = createAsyncThunk(
         return res.data;
     }
 )
+
+export const userRegister = createAsyncThunk(
+    "auth/userRegister",
+    async (user) => {
+        const res = await axios.post("http://localhost:5279/api/auth/register", user);
+        return res.data;
+    }
+)

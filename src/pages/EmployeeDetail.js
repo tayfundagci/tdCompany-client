@@ -11,6 +11,8 @@ import Form from "react-bootstrap/Form"
 import { fetchCompany } from '../redux/company/services';
 
 function EmployeeDetail() {
+    const user = JSON.parse(localStorage.getItem("user"));
+
     const [show, setShow] = useState("");
     const [name, setName] = React.useState('');
     const [age, setAge] = React.useState('');
@@ -72,7 +74,8 @@ function EmployeeDetail() {
                 <div className="card-body">
                     <div className="d-flex justify-content-between">
                         <h4 className="card-title">{employee?.name}</h4>
-                        <h4><i id='thrash' onClick={() => handleDelete(employee_Id)} className="bi bi-trash"></i></h4>
+                        {user && user.role == 1 && <h4><i id='thrash' onClick={() => handleDelete(employee_Id)} className="bi bi-trash"></i></h4>
+                        }
                     </div>
                     <h6 className="card-text">Position: {employee?.position}</h6>
                     <h6 className="card-title">Age : {employee?.age}</h6>
@@ -82,7 +85,8 @@ function EmployeeDetail() {
                     <h6 className="card-title">Address: {employee?.company && employee.company.address}</h6>
                     <div className="d-flex justify-content-between">
                         <h6 className="card-title">Country: {employee?.company && employee.company.country}</h6>
-                        <h4><i id='thrash' className="bi bi-pen" onClick={handleShow}></i></h4>
+                        {user && user.role == 1 && <h4><i id='thrash' className="bi bi-pen" onClick={handleShow}></i></h4>
+                        }
                     </div>
                 </div>
             </div>

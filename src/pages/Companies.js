@@ -9,8 +9,11 @@ import axios from "axios"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from "react-bootstrap/Form"
+import { selectUser } from '../redux/auth/userSlice';
 
 function Companies() {
+    const user = JSON.parse(localStorage.getItem("user"));
+
     let navigate = useNavigate();
     const [show, setShow] = useState("");
 
@@ -32,17 +35,36 @@ function Companies() {
         dispatch(fetchCompany());
     }
 
-    const updateCompanies = (id) => {
-        dispatch(updateCompany({
-            id,
-            name,
-            address,
-            country
-        })).then(() => {
+    // const updateCompanies = (id) => {
+    //     dispatch(updateCompany({
+    //         id,
+    //         name,
+    //         address,
+    //         country
+    //     })).then(() => {
+    //         dispatch(fetchCompany());
+    //     })
+    //     setShow(false);
+    // }
+
+    const updateCompanies = async (id) => {
+        const response = await fetch(`http://localhost:5279/api/companies/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                name,
+                address,
+                country
+            })
+        }).then(() => {
             dispatch(fetchCompany());
         })
         setShow(false);
     }
+
 
     if (isLoading) {
         return <Loading />
@@ -72,12 +94,13 @@ function Companies() {
                                     <div className="card-body">
                                         <div className="d-flex justify-content-between">
                                             <h4 className="card-title">{company.companyName}</h4>
-                                            <h4><i id='thrash' onClick={() => handleDelete(company.id)} className="bi bi-trash"></i></h4>
+                                            {user && user.role == 1 && <h4><i id='thrash' onClick={() => handleDelete(company.id)} className="bi bi-trash"></i></h4>}
                                         </div>
                                         <h6 className="card-title">{company.address}</h6>
                                         <div className='d-flex justify-content-between'>
                                             <p className="card-text">{company.country}</p>
-                                            <i id='thrash' className="bi bi-pen" type="button" onClick={handleShow}></i>
+                                            {user && user.role == 1 && <i id='thrash' className="bi bi-pen" type="button" onClick={handleShow}></i>
+                                            }
                                         </div>
                                     </div>
                                 </div>
