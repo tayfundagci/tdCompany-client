@@ -1,7 +1,11 @@
 import React from 'react'
+
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { userRegister } from '../redux/auth/services';
+
+import { toast } from 'react-toastify';
 
 function Register() {
     const [name, setName] = React.useState("");
@@ -19,11 +23,12 @@ function Register() {
                 username: name,
                 password: password
             })).then(() => {
-                navigate("/")
+                navigate("/login")
+                toast.success("Registration successful")
             })
         }
         else {
-            alert("Name or password does not match");
+            toast.error("Username or password is incorrect")
         }
     }
 

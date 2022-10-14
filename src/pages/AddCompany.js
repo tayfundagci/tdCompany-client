@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { addCompany } from '../redux/company/services';
+import { addCompany, fetchCompany } from '../redux/company/services';
 
 function AddCompany() {
     const [name, setName] = React.useState('');

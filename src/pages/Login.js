@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { userLogin } from '../redux/auth/services';
 
 function Login() {
@@ -17,7 +18,7 @@ function Login() {
             username: username,
             password: password
         })).then(() => {
-            navigate("/")
+            toast.success("Login successful")
             window.location.href = "/";
         })
     }

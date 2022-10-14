@@ -5,12 +5,11 @@ import { Link, useNavigate } from 'react-router-dom'
 function Sidebar() {
 
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
 
     const logout = () => {
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        window.location.href = "/";
+        window.location.href = "/login";
     }
 
 
@@ -57,7 +56,7 @@ function Sidebar() {
                     </Link>
                 </li>
             </ul>
-            <div className="dropdown">
+            <div className="dropup">
                 {user &&
                     <>
                         <hr />

@@ -1,3 +1,5 @@
+@import 'react-toastify/dist/ReactToastify.css';
+
 $primary-color: #ffffff;
 
 body {
@@ -6,10 +8,20 @@ body {
     min-height: 100vh;
 }
 
-#main-container {
+.main-container {
     margin-top: 15px;
     padding-left: 280px;
     padding-top: 100px;
+}
+
+.main-containerWithUser {
+    margin-top: 15px;
+    padding-left: 90px;
+    padding-top: 100px;
+}
+
+.ToastContainer {
+    margin-top: 60px;
 }
 
 #loading {
@@ -51,7 +63,7 @@ a {
         color: white;
     }
 
-    .dropdown {
+    .dropup {
         ul {
             background-color: #b8bcc5;
 
@@ -110,9 +122,8 @@ a {
 
     #home-page {
         #text-area {
-            margin-top: 175px;
+            margin-top: 155px;
             font-size: 26px;
-            text-align: justify;
             margin-right: 70px;
             background: -webkit-linear-gradient(#eee, #4a90e2, #eee);
             -webkit-background-clip: text;

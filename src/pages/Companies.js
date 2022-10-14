@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Error from '../components/Error';
 import Loading from '../components/Loading';
-import { deleteCompany, fetchCompany, updateCompany } from '../redux/company/services';
+import { deleteCompany, fetchCompany, updateCompany, updateCompanyy } from '../redux/company/services';
 import axios from "axios"
 
 import Button from 'react-bootstrap/Button';
@@ -14,7 +14,6 @@ import { selectUser } from '../redux/auth/userSlice';
 function Companies() {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    let navigate = useNavigate();
     const [show, setShow] = useState("");
 
     const [name, setName] = useState('');
@@ -35,36 +34,17 @@ function Companies() {
         dispatch(fetchCompany());
     }
 
-    // const updateCompanies = (id) => {
-    //     dispatch(updateCompany({
-    //         id,
-    //         name,
-    //         address,
-    //         country
-    //     })).then(() => {
-    //         dispatch(fetchCompany());
-    //     })
-    //     setShow(false);
-    // }
-
-    const updateCompanies = async (id) => {
-        const response = await fetch(`http://localhost:5279/api/companies/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            },
-            body: JSON.stringify({
-                name,
-                address,
-                country
-            })
-        }).then(() => {
+    const updateCompanies = (id) => {
+        dispatch(updateCompany({
+            id,
+            name,
+            address,
+            country
+        })).then(() => {
             dispatch(fetchCompany());
         })
         setShow(false);
     }
-
 
     if (isLoading) {
         return <Loading />

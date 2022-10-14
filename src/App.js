@@ -12,14 +12,17 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div id='app-body'>
       <Navbar />
+      <ToastContainer className="ToastContainer" theme="light" />
       <div style={{ display: "flex" }}>
-        <Sidebar />
-        <div id='main-container' className="container">
+        {user && <Sidebar />}
+        <div className={user ? "container main-container" : "container main-containerWithUser"}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/companies" element={<Companies />} />
