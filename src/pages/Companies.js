@@ -30,7 +30,10 @@ function Companies() {
     }, [])
 
     const handleDelete = async (id) => {
-        await dispatch(deleteCompany(id));
+        var result = window.confirm("Are you sure you want to delete this company?");
+        if (result) {
+            await dispatch(deleteCompany(id));
+        }
         dispatch(fetchCompany());
     }
 

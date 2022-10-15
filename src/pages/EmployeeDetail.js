@@ -55,7 +55,10 @@ function EmployeeDetail() {
     }, [selectedEmployee])
 
     const handleDelete = async (id) => {
-        await dispatch(deleteEmployee(id));
+        var result = window.confirm("Are you sure you want to delete this employee?");
+        if (result) {
+            await dispatch(deleteEmployee(id));
+        }
         navigate('/employees');
     }
 
