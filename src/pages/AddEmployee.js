@@ -29,8 +29,9 @@ function AddEmployee() {
             age,
             position,
             companyId: company
-        }));
-        navigate('/employees');
+        })).then(() => {
+            navigate('/employees');
+        });
     }
 
 

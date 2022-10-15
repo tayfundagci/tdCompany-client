@@ -17,12 +17,13 @@ function AddCompany() {
 
     const addCompanyy = async (e) => {
         e.preventDefault();
-        dispatch(addCompany({
+        await dispatch(addCompany({
             name,
             address,
             country
-        }));
-        navigate('/companies');
+        })).then(() => {
+            navigate('/companies')
+        });
     }
 
     return (
