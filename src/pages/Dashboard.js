@@ -17,16 +17,11 @@ function Dashboard() {
         dispatch(getCompanyPerson());
     }, [])
 
-    console.log(employees);
-    console.log(companyPerson)
-
-
     // const countOfEmployee = () => {
     //     return _(employees).groupBy('company.name').map((v, companyName) => ({ companyName, count: v.length })).value();
     // }
 
     // const countData = countOfEmployee();
-    // console.log(countData);
 
     return (
         <>

@@ -14,14 +14,12 @@ function Profile() {
         dispatch(fetchUserDetail());
     }, [])
 
-    console.log(userDetail);
     return (
         <div className='container'>
             <div className="row">
                 <div className='col-lg-10'>
                     Profile
                     <div>Welcome {user.username}</div>
-                    <div>Your Information:</div>
                 </div>
                 <div className='col-lg-2'>
                     <Link to="/edit-profile">
@@ -31,12 +29,34 @@ function Profile() {
             </div>
 
             <div className="row mt-5">
-                <div>{userDetail && userDetail.name}</div>
-                <div>{userDetail && userDetail.surname}</div>
-                <div>{userDetail && userDetail.address}</div>
-                <div>{userDetail && userDetail.phone}</div>
+
             </div>
-        </div>
+
+
+            <div>
+                <div className="">
+                    <div className="text-light">
+                        <div className="bg-transparent">
+                            <div className="card bg-transparent border border-white" style={{ borderRadius: '15px' }}>
+                                <div className="card-body p-4">
+                                    <div className="d-flex ">
+                                        <div >
+                                            <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" style={{ width: '120px', borderRadius: '10px' }} />
+                                        </div>
+                                        <div className="flex-grow-1 ms-3">
+                                            <h5 className='mt-2'>{userDetail ? userDetail.name : "Name: "} <span> </span> {userDetail && userDetail.surname}</h5>
+                                            <div className='mt-2'>{userDetail ? userDetail.address : "Address: "}</div>
+                                            <div>{userDetail ? userDetail.phone : "Phone: "}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div >
     )
 }
 

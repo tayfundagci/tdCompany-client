@@ -25,8 +25,6 @@ function Employees() {
         return <Error message={error} />
     }
 
-    console.log(employees);
-
     return (
         <div className="container">
             <div className='row justify-content-center'>
