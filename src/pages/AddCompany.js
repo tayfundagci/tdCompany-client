@@ -2,8 +2,10 @@ import React from 'react'
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Error from '../components/Error';
+import Loading from '../components/Loading';
 
 import { addCompany, fetchCompany } from '../redux/company/services';
 
@@ -11,6 +13,9 @@ function AddCompany() {
     const [name, setName] = React.useState('');
     const [address, setAddress] = React.useState('');
     const [country, setCountry] = React.useState('');
+
+    const isLoading = useSelector((state) => state.company.isLoading);
+    const error = useSelector((state) => state.company.error);
 
     const navigate = useNavigate()
     const dispatch = useDispatch();
@@ -24,6 +29,14 @@ function AddCompany() {
         })).then(() => {
             navigate('/companies')
         });
+    }
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+    if (error) {
+        return <Error message={error} />
     }
 
     return (

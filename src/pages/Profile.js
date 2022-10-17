@@ -1,18 +1,30 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Error from '../components/Error';
+import Loading from '../components/Loading';
 import { fetchUserDetail } from '../redux/userDetail/services';
 
 function Profile() {
 
     const user = JSON.parse(localStorage.getItem("user"));
     const userDetail = useSelector(state => state.userdetail.items.userDetail);
+    const isLoading = useSelector((state) => state.userdetail.isLoading);
+    const error = useSelector((state) => state.userdetail.error);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchUserDetail());
     }, [])
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+    if (error) {
+        return <Error message={error} />
+    }
 
     return (
         <div className='container'>

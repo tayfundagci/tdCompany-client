@@ -9,6 +9,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from "react-bootstrap/Form"
 import { fetchCompany } from '../redux/company/services';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 function EmployeeDetail() {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -21,6 +23,8 @@ function EmployeeDetail() {
 
     const dispatch = useDispatch();
     const companies = useSelector(state => state.company.items.companyList);
+    const isLoading = useSelector((state) => state.company.isLoading);
+    const error = useSelector((state) => state.company.error);
 
     useEffect(() => {
         dispatch(fetchCompany());
@@ -69,6 +73,14 @@ function EmployeeDetail() {
         setPosition(employee?.position);
         setCompany(employee?.companyId);
         setShow(employee.id);
+    }
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+    if (error) {
+        return <Error message={error} />
     }
 
     return (

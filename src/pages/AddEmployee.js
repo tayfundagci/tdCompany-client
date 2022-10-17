@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Error from '../components/Error';
+import Loading from '../components/Loading';
 import { fetchCompany } from '../redux/company/services';
 import { addEmployee } from '../redux/employee/services';
 
@@ -17,6 +19,8 @@ function AddEmployee() {
 
     const dispatch = useDispatch();
     const companies = useSelector(state => state.company.items.companyList);
+    const isLoading = useSelector((state) => state.employee.isLoading);
+    const error = useSelector((state) => state.employee.error);
 
     useEffect(() => {
         dispatch(fetchCompany());
@@ -34,7 +38,13 @@ function AddEmployee() {
         });
     }
 
+    if (isLoading) {
+        return <Loading />
+    }
 
+    if (error) {
+        return <Error message={error} />
+    }
 
     return (
         <div id='add-employe'>

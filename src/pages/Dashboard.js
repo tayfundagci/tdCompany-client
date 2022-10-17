@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { fetchAllEmployee } from '../redux/employee/services';
 import { fetchCompany, getCompanyPerson } from '../redux/company/services';
 import _ from "lodash";
+import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 function Dashboard() {
 
@@ -11,6 +13,10 @@ function Dashboard() {
     const employees = useSelector(state => state.employee.items.employeeList);
     const company = useSelector(state => state.company.items.companyList);
     const companyPerson = useSelector(state => state.company.items);
+
+    const isLoading = useSelector((state) => state.company.isLoading);
+    const error = useSelector((state) => state.company.error);
+
     useEffect(() => {
         dispatch(fetchAllEmployee());
         dispatch(fetchCompany());
@@ -22,6 +28,14 @@ function Dashboard() {
     // }
 
     // const countData = countOfEmployee();
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+    if (error) {
+        return <Error message={error} />
+    }
 
     return (
         <>

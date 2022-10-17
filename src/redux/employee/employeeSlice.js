@@ -36,19 +36,40 @@ export const employeeSlice = createSlice({
         },
 
         //addEmploye
+        [addEmployee.pending]: (state, action) => {
+            state.isLoading = true;
+        },
         [addEmployee.fulfilled]: (state, action) => {
             state.items = action.payload
         },
+        [addEmployee.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.error.message;
+        },
 
         //updateEmployee
+        [updateEmployee.pending]: (state, action) => {
+            state.isLoading = true;
+        },
         [updateEmployee.fulfilled]: (state, action) => {
             state.items = action.payload
         },
+        [updateEmployee.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.error.message;
+        },
 
         //deleteEmployee
+        [deleteEmployee.pending]: (state, action) => {
+            state.isLoading = true;
+        },
         [deleteEmployee.fulfilled]: (state, action) => {
             state.items = action.payload
-        }
+        },
+        [deleteEmployee.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.error.message;
+        },
 
     }
 });

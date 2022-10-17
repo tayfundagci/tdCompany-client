@@ -60,7 +60,6 @@ export const companySlice = createSlice({
             })
             builder.addCase(updateCompany.rejected, (state, action) => {
                 state.isLoading = false;
-                //action.error.message = "UnAuthorized !";
                 state.error = action.error.message;
             })
 
@@ -73,7 +72,6 @@ export const companySlice = createSlice({
             })
             builder.addCase(deleteCompany.rejected, (state, action) => {
                 state.isLoading = false;
-                //action.error.message = "UnAuthorized !";
                 state.error = action.error.message;
             })
         }
