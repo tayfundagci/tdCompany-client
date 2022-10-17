@@ -30,6 +30,7 @@ export const userSlice = createSlice({
             state.isLoading = false;
             state.items = action.payload;
             localStorage.setItem("token", action.payload.token);
+            localStorage.setItem("id", action.payload.id);
             localStorage.setItem("user", JSON.stringify(action.payload));
             state.isLoggedin = true;
         },
