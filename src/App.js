@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import { ToastContainer } from 'react-toastify';
 import EditProfile from './pages/EditProfile';
+import UpdateUserDetail from './pages/UpdateUserDetail';
 
 function App() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -36,6 +37,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/edit-profile" element={<EditProfile />} />
+            <Route path="/update-profile/:id" element={<UpdateUserDetail />} />
           </Routes>
         </div>
       </div>

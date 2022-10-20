@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addUserDetail, fetchUserDetail } from "./services";
+import { addUserDetail, fetchUserDetail, updateUserDetail } from "./services";
 
 export const userDetailSlice = createSlice({
     name: "userdetail",
@@ -32,6 +32,19 @@ export const userDetailSlice = createSlice({
             state.isLoading = false;
         },
         [addUserDetail.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
+
+        //updateUserDetail
+        [updateUserDetail.pending]: (state, action) => {
+            state.isLoading = true;
+        },
+        [updateUserDetail.fulfilled]: (state, action) => {
+            state.items = action.payload;
+            state.isLoading = false;
+        },
+        [updateUserDetail.rejected]: (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
         }

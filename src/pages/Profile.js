@@ -12,6 +12,8 @@ function Profile() {
     const isLoading = useSelector((state) => state.userdetail.isLoading);
     const error = useSelector((state) => state.userdetail.error);
 
+    console.log(userDetail);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -35,7 +37,7 @@ function Profile() {
                 </div>
                 <div className='col-lg-2'>
                     <Link to="/edit-profile">
-                        <button className='btn btn-outline-info'>Edit Profile</button>
+                        <button className='btn btn-outline-info'>Add Profile Data</button>
                     </Link>
                 </div>
             </div>
@@ -56,7 +58,13 @@ function Profile() {
                                             <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" style={{ width: '120px', borderRadius: '10px' }} />
                                         </div>
                                         <div className="flex-grow-1 ms-3">
-                                            <h5 className='mt-2'>{userDetail ? userDetail.name : "Name: "} <span> </span> {userDetail && userDetail.surname}</h5>
+                                            <div className="d-flex justify-content-between">
+                                                <h5 className='mt-2'>{userDetail ? userDetail.name : "Name: "} <span> </span> {userDetail && userDetail.surname}</h5>
+                                                {userDetail &&
+                                                    <Link to={`/update-profile/${userDetail && userDetail.userDetailId}`}>
+                                                        <i id='thrash' className="bi bi-pen" type="button"></i>
+                                                    </Link>}
+                                            </div>
                                             <div className='mt-2'>{userDetail ? userDetail.address : "Address: "}</div>
                                             <div>{userDetail ? userDetail.phone : "Phone: "}</div>
                                         </div>

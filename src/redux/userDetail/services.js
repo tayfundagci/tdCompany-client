@@ -17,6 +17,14 @@ export const addUserDetail = createAsyncThunk(
     }
 );
 
+export const updateUserDetail = createAsyncThunk(
+    "userdetail/updateUserDetail",
+    async (userDetail) => {
+        const res = await axios.put(`http://localhost:5279/api/userdetail/${localStorage.getItem("id")}`, userDetail);
+        return res.data;
+    }
+);
+
 
 
 
